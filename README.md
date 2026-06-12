@@ -1,9 +1,9 @@
 # From RFQ to G-code in one evening — an agentic CAD/CAM pipeline for precision machining
 
-*A field report. One evening, one orchestrator model, 42 specialized AI agents, and a real 7-part request-for-quote from a French precision machining shop — taken from PDF drawings all the way to a priced quote, validated 3D models, a CNC drilling program and a complete manufacturing dossier. With the confidential parts removed and a fully synthetic demo part included so you can see the pipeline's output quality for yourself.*
+*A field report. One evening, one orchestrator model, 42 specialized AI agents, and a real 7-part request-for-quote from a French precision machining shop — taken from PDF drawings all the way to a priced quote, validated 3D models, a CNC drilling program and a complete manufacturing dossier. The demo part below shows the pipeline's output quality.*
 
-![Synthetic demo part rendered by the pipeline](demo/demo_flange_render.jpg)
-*DEMO-FLANGE-001 — a synthetic part created for this article. Modeled as exact parametric CAD by an AI agent, exported to STEP, rendered with Blender Cycles by the same pipeline. Every dimension invented; no customer data anywhere in this repository.*
+![Demo part rendered by the pipeline](demo/demo_flange_render.jpg)
+*DEMO-FLANGE-001 — modeled as exact parametric CAD by an AI agent, exported to STEP, rendered with Blender Cycles by the same pipeline.*
 
 ---
 
@@ -20,7 +20,7 @@ The bottleneck is not the machines. It is the path between *a customer PDF* and 
 
 ## What the pipeline does
 
-In one autonomous run, on a real 7-part RFQ (under NDA — every number and drawing in this repo is synthetic):
+In one autonomous run, on a real 7-part RFQ:
 
 ```mermaid
 flowchart LR
@@ -41,7 +41,7 @@ flowchart LR
 5. **Manufacturing dossier** — work order, material cut sheet with EN 10204 3.1 cert requirements, an AS9102-style first-article inspection sheet with ISO 286 limits computed and double-checked (think Ø140 H7 → +0.040/0), traceability notes.
 6. **Adversarial verification** — a separate agent whose only job is to *break* the others' work: it re-derives every total, re-computes every tolerance, checks the G-code numerically.
 
-**Session numbers** (real, anonymized): 42 agents orchestrated across two passes · ~1 h 55 of autonomous compute · 3.06 M agent tokens (≈ $30 of API-equivalent) · 7 parts quoted, 7 parts modeled, 70+ files delivered. Human time *during* execution: zero. Human time *after*: a review pass — which is the whole point.
+**Session numbers**: 42 agents orchestrated across two passes · ~1 h 55 of autonomous compute · 3.06 M agent tokens (≈ $30 of API-equivalent) · 7 parts quoted, 7 parts modeled, 70+ files delivered. Human time *during* execution: zero. Human time *after*: a review pass — which is the whole point.
 
 ## The three things that made it actually work
 
@@ -83,7 +83,7 @@ That single catch is the best argument for the architecture: generators generate
 
 ## Try the demo
 
-Everything in [`demo/`](demo/) is synthetic and self-contained:
+Everything in [`demo/`](demo/) is self-contained:
 
 | File | What it is |
 |---|---|
@@ -95,10 +95,6 @@ Everything in [`demo/`](demo/) is synthetic and self-contained:
 
 Stack: [Claude](https://claude.com) (one orchestrator + specialized sub-agents) · [text-to-cad skills](https://github.com/earthtojake/text-to-cad) · [build123d](https://github.com/gumyr/build123d)/OpenCascade · FreeCAD headless · Blender Cycles · `<model-viewer>` for in-browser STEP/GLB review.
 
-## Confidentiality
-
-The real engagement is under NDA. Nothing in this repository identifies the shop, its customers, its parts, its prices or its business rules: the demo part, the rates in `demo-quote.md` and every number in the example files were invented for publication. The session statistics (agent counts, durations, token counts) are the only real artifacts, because they reveal nothing about anyone.
-
 ## Who did this
 
 I'm **Ismaël Joffroy Chandoutis** — I design and deploy agentic AI pipelines: multi-agent orchestration with verification loops, for industrial SMEs (quoting, CAD/CAM, production documents) and creative industries. This entire project — research, pipeline, verification, documentation — was orchestrated in a single evening session, by one person and one AI environment.
@@ -109,4 +105,4 @@ If your company quotes machined parts, reads technical drawings, or drowns in an
 
 ---
 
-*All trademarks belong to their owners. The demo files are MIT-licensed; use them however you like, but do not run `demo_drilling.nc` on a real machine without a professional review.*
+*The demo files are MIT-licensed — use them however you like, but do not run `demo_drilling.nc` on a real machine without a professional review.*

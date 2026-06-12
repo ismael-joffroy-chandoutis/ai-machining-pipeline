@@ -1,9 +1,9 @@
 # De la demande de prix au G-code en une soirée — une chaîne d'agents IA pour l'usinage de précision
 
-*Retour d'expérience. Une soirée, un modèle orchestrateur, 42 agents IA spécialisés, et une vraie consultation de 7 pièces d'un atelier d'usinage de précision français — menée des plans PDF jusqu'au devis chiffré, aux modèles 3D validés, au programme de perçage CN et au dossier de fabrication complet. Tout ce qui est confidentiel a été retiré ; une pièce de démonstration entièrement synthétique est incluse pour juger la qualité de sortie.*
+*Retour d'expérience. Une soirée, un modèle orchestrateur, 42 agents IA spécialisés, et une vraie consultation de 7 pièces d'un atelier d'usinage de précision français — menée des plans PDF jusqu'au devis chiffré, aux modèles 3D validés, au programme de perçage CN et au dossier de fabrication complet. La pièce de démonstration ci-dessous donne la qualité de sortie.*
 
-![Pièce de démonstration synthétique rendue par la chaîne](demo/demo_flange_render.jpg)
-*DEMO-FLANGE-001 — pièce créée pour cet article. CAO paramétrique exacte écrite par un agent, export STEP, render Blender Cycles par la même chaîne. Toutes les cotes sont inventées ; aucune donnée client dans ce dépôt.*
+![Pièce de démonstration rendue par la chaîne](demo/demo_flange_render.jpg)
+*DEMO-FLANGE-001 — CAO paramétrique exacte écrite par un agent, export STEP, render Blender Cycles par la même chaîne.*
 
 ## Le problème
 
@@ -18,7 +18,7 @@ Le goulot n'est pas dans les machines. Il est entre *le PDF du client* et *une r
 
 ## Ce que fait la chaîne
 
-En un seul passage autonome, sur une consultation réelle de 7 pièces (sous NDA — tous les chiffres et plans de ce dépôt sont synthétiques) :
+En un seul passage autonome, sur une consultation réelle de 7 pièces :
 
 1. **Lecture des plans** — un agent par PDF : cartouche, matière, traitements, tolérances générales, chaque perçage/taraudage/ajustement/état de surface, et proposition de brut avec surépaisseurs.
 2. **Devis** — un moteur transparent : masse du brut × prix matière du jour (LME + distributeurs, sourcés et datés), temps par opération, les règles de l'atelier encodées en *Python lisible*. Chaque euro montre sa formule.
@@ -27,7 +27,7 @@ En un seul passage autonome, sur une consultation réelle de 7 pièces (sous NDA
 5. **Dossier de fabrication** — ordre de fabrication, bon de débit avec exigence de certificat matière EN 10204 3.1, fiche de contrôle premier article type AS9102 avec les bornes ISO 286 calculées et contre-vérifiées (Ø140 H7 → +0,040/0), traçabilité.
 6. **Vérification adversariale** — un agent séparé dont le seul rôle est de *casser* le travail des autres : il recalcule chaque total, chaque tolérance, et vérifie le G-code numériquement.
 
-**Les chiffres de la session** (réels, anonymisés) : 42 agents sur deux passes · ~1 h 55 de calcul autonome · 3,06 M de tokens (≈ 30 $ d'équivalent API) · 7 pièces chiffrées, 7 modélisées, 70+ fichiers livrés. Temps humain *pendant* l'exécution : zéro. Temps humain *après* : une relecture — et c'est exactement le but.
+**Les chiffres de la session** : 42 agents sur deux passes · ~1 h 55 de calcul autonome · 3,06 M de tokens (≈ 30 $ d'équivalent API) · 7 pièces chiffrées, 7 modélisées, 70+ fichiers livrés. Temps humain *pendant* l'exécution : zéro. Temps humain *après* : une relecture — et c'est exactement le but.
 
 ## Les trois choses qui font que ça marche vraiment
 
@@ -43,7 +43,7 @@ L'opérateur valide le bridage et l'attaque matière. Le BE tranche chaque hypot
 
 ## Essayer la démo
 
-Tout le dossier [`demo/`](demo/) est synthétique et autonome : générateur build123d, STEP/STL (s'ouvrent dans SolidWorks/FreeCAD), G-code illustratif avec vitesses et avances calculées, render, et un devis exemple à taux fictifs.
+Le dossier [`demo/`](demo/) est autonome : générateur build123d, STEP/STL (s'ouvrent dans SolidWorks/FreeCAD), G-code illustratif avec vitesses et avances calculées, render, et un devis exemple à taux fictifs.
 
 ## Qui a fait ça
 
@@ -55,4 +55,4 @@ Si votre entreprise chiffre des pièces usinées, lit des plans techniques, ou s
 
 ---
 
-*La mission réelle est sous NDA : rien ici n'identifie l'atelier, ses clients, ses pièces, ses prix ou ses règles métier. Ne faites pas tourner `demo_drilling.nc` sur une vraie machine sans revue professionnelle.*
+*Ne faites pas tourner `demo_drilling.nc` sur une vraie machine sans revue professionnelle.*
