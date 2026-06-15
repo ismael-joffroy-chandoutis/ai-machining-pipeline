@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use or cite this work, please credit it as below."
+title: "ai-machining-pipeline"
+abstract: "From RFQ to G-code in one evening — an agentic CAD/CAM pipeline for precision machining (field report + synthetic demo part)"
+type: dataset
+authors:
+  - given-names: "Ismaël"
+    family-names: "Joffroy Chandoutis"
+    website: "https://github.com/12georgiadis"
+repository-code: "https://github.com/12georgiadis/ai-machining-pipeline"
+url: "https://github.com/12georgiadis/ai-machining-pipeline"
+license: CC-BY-NC-ND-4.0
