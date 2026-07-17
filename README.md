@@ -1,3 +1,5 @@
+**English** · [Français](README.fr.md)
+
 # From RFQ to G-code in one evening — an agentic CAD/CAM pipeline for precision machining
 
 *A field report. One evening, one orchestrator model, 42 specialized AI agents, and a real 7-part request-for-quote from a French precision machining shop — taken from PDF drawings all the way to a priced quote, validated 3D models, a CNC drilling program and a complete manufacturing dossier. The demo part below shows the pipeline's output quality.*
